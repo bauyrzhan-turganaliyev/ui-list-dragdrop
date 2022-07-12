@@ -6,15 +6,16 @@ namespace TB
 {
     public class Root : MonoBehaviour
     {
-        [SerializeField] private Setuper _setuper;
+        [SerializeField] private ItemService _itemService;
+        [SerializeField] private CreateItemService _createItemService;
         [SerializeField] private InputService _inputService;
         [SerializeField] private SortingService _sortingService;
-        [SerializeField] private AppSetupCreator _appSetup;
+        [SerializeField] private GameData _gameData;
 
         private void Start()
         {
-            _setuper.Setup(_appSetup, _inputService, _sortingService);
-
+            _gameData.Init();
+            _itemService.Setup(_inputService, _sortingService, _gameData, _createItemService);
         }
 
     }

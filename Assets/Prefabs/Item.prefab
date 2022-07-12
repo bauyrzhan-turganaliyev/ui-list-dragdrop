@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7429019533241926607}
   - component: {fileID: 4900516356213803008}
   - component: {fileID: 7423240721964432566}
+  - component: {fileID: 4331096448125170414}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -92,8 +93,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _title: 
-  _titleText: {fileID: 1628689103557138710}
+  _listType: 0
   _idText: {fileID: 6214394205718744355}
+  _titleText: {fileID: 1628689103557138710}
+  _canvasGroup: {fileID: 4331096448125170414}
+  dragOnSurfaces: 1
+--- !u!225 &4331096448125170414
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032602885938836017}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6504857512049318221
 GameObject:
   m_ObjectHideFlags: 0

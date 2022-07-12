@@ -10,11 +10,11 @@ namespace TB
         [SerializeField] private GameObject _sortButton;
         [SerializeField] private bool _isToUp = false;
         [SerializeField] private SortingByType _sortingByType = SortingByType.ByID;
-        private List<ItemInfo> _items;
+        private GameData _gameData;
         private ItemInfo[] itemsInfo;
-        public void Init(List<ItemInfo> items)
+        public void Init(GameData gameData)
         {
-            _items = items;
+            _gameData = gameData;
         }
         public void SortByID()
         {
@@ -31,12 +31,12 @@ namespace TB
             switch (_sortingByType)
             {
                 case SortingByType.ByID:
-                    if (_isToUp) itemsInfo = _items.OrderBy(go => go.ID).ToArray();
-                    else itemsInfo = _items.OrderByDescending(go => go.ID).ToArray();
+                    if (_isToUp) itemsInfo = _gameData.MainPanelItems.OrderBy(go => go.ID).ToArray();
+                    else itemsInfo = _gameData.MainPanelItems.OrderByDescending(go => go.ID).ToArray();
                     break;
                 case SortingByType.ByTitle:
-                    if (_isToUp) itemsInfo = _items.OrderBy(go => go.Title).ToArray();
-                    else itemsInfo = _items.OrderByDescending(go => go.Title).ToArray();
+                    if (_isToUp) itemsInfo = _gameData.MainPanelItems.OrderBy(go => go.Title).ToArray();
+                    else itemsInfo = _gameData.MainPanelItems.OrderByDescending(go => go.Title).ToArray();
                     break;
             }
 
