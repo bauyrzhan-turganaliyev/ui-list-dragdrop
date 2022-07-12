@@ -44,6 +44,9 @@ namespace TB
             if (int.TryParse(_setIDIF.text, out int result))
             {
                 id = _gameData.GetAvailbaleID(result);
+            } else
+            {
+                id = _gameData.GetAvailbaleID(result);
             }
 
             ListType listType = ListType.Main;

@@ -11,10 +11,11 @@ namespace TB
         [SerializeField] private InputService _inputService;
         [SerializeField] private SortingService _sortingService;
         [SerializeField] private GameData _gameData;
+        [SerializeField] private SaveDataService _saveDataService;
 
         private void Start()
         {
-            _gameData.Init();
+            _gameData.Init(_saveDataService);
             _itemService.Setup(_inputService, _sortingService, _gameData, _createItemService);
         }
 

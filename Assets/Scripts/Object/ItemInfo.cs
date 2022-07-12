@@ -18,6 +18,8 @@ namespace TB
         [SerializeField] private TMP_Text _titleText;
         [SerializeField] private CanvasGroup _canvasGroup;
 
+        public Item Item;
+
         public Action<ItemInfo> OnBeginDragAction;
         public Action<ItemInfo> OnDragAction;
         public Action OnEndDragAction; 
@@ -35,6 +37,8 @@ namespace TB
 
         public void Init(Item item)
         {
+            Item = item;
+
             _id = item.ID;
             _title = item.Title;
             _listType = item.ListType;
@@ -105,9 +109,11 @@ namespace TB
             {
                 case ListType.Main:
                     _listType = ListType.Secondary;
+                    Item.ListType = ListType.Secondary;
                     break;
                 case ListType.Secondary:
                     _listType = ListType.Main;
+                    Item.ListType = ListType.Main;
                     break;
             }
         }

@@ -9,40 +9,55 @@ namespace TB
     {
         [SerializeField] private TMP_Text _mainItemsCountText;
         [SerializeField] private TMP_Text _secondaryItemsCountText;
+
         public List<ItemInfo> MainPanelItems;
         public List<ItemInfo> SecondaryPanelItems;
+        public List<ItemInfo> AllItemsInfo;
+        public List<Item> AllItems;
+        public List<Item> LoadedItems;
 
-        private List<ItemInfo> _allItems;
+        private SaveDataService _saveDataService;
+
         private Dictionary<int, bool> _idStores;
 
         private int _nextID = 0;
-        public void Init()
+        public void Init(SaveDataService saveDataService)
         {
+            _saveDataService = saveDataService;
+            _saveDataService.Init(this);
+
             _idStores = new Dictionary<int, bool>();
-            _allItems = new List<ItemInfo>();
+            AllItems = new List<Item>();
+            LoadedItems = new List<Item>();
+            AllItemsInfo = new List<ItemInfo>();
             MainPanelItems = new List<ItemInfo>();
             SecondaryPanelItems = new List<ItemInfo>();
+
+            LoadData();
         }
-        public void AddNewItem(ItemInfo item)
+        public void AddNewItem(ItemInfo itemInfo, Item item)
         {
-            switch (item.ListType)
+            switch (itemInfo.ListType)
             {
                 case ListType.Main:
-                    MainPanelItems.Add(item);
+                    MainPanelItems.Add(itemInfo);
                     break;
                 case ListType.Secondary:
-                    SecondaryPanelItems.Add(item);
+                    SecondaryPanelItems.Add(itemInfo);
                     break;
             }
-            _allItems.Add(item);
+
+            AllItems.Add(item);
+            AllItemsInfo.Add(itemInfo);
+
             UpdateTexts();
         }
 
         public void TransferToMain(ItemInfo item)
         {
+
             item.SwitchListType();
 
-            _allItems.Add(item);
             SecondaryPanelItems.Add(item);
 
             MainPanelItems.Remove(item);
@@ -54,7 +69,6 @@ namespace TB
         {
             item.SwitchListType();
 
-            _allItems.Add(item);
             MainPanelItems.Add(item);
 
             SecondaryPanelItems.Remove(item);
@@ -74,7 +88,7 @@ namespace TB
 
         public int GetItemsCount()
         {
-            return _allItems.Count;
+            return AllItemsInfo.Count;
         }
 
         public int GetAvailbaleID(int id)
@@ -92,11 +106,30 @@ namespace TB
                         return _nextID;
                     }
                 }
-            } else
+            } 
+            else
             {
                 _idStores.Add(id, true);
                 return id;
             }
+        }
+
+        private void LoadData()
+        {
+            LoadedItems = _saveDataService.GetItemsList();
+
+            for (int i = 0; i < LoadedItems.Count; i++)
+            {
+                if (_idStores.ContainsKey(LoadedItems[i].ID))
+                {
+                    LoadedItems.RemoveAt(i);
+                }
+                else
+                {
+                    _idStores.Add(LoadedItems[i].ID, true);
+                }
+            }
+            _nextID = LoadedItems.Count;
         }
     }
 }

@@ -3,36 +3,15 @@ namespace TB
     [System.Serializable]
     public class Item
     {
-        private readonly int _id;
-        private readonly string _title;
-        private ListType _listType;
-        public int ID
-        {
-            get
-            {
-                return _id;
-            }
-        }
-
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-        }
-        public ListType ListType
-        {
-            get
-            {
-                return _listType;
-            }
-        }
+        public int ID;
+        public string Title;
+        public ListType ListType;
+        
         public Item(int ID, string title, ListType listType)
         {
-            _id = ID;
-            _title = title;
-            _listType = listType;
+            this.ID = ID;
+            this.Title = title;
+            this.ListType = listType;
         }
     }
 }

@@ -24,6 +24,8 @@ namespace TB
             _inputService = inputService;
             _gameData = gameData;
 
+            LoadData();
+
             inputService.Init(_items);
             sortingService.Init(gameData);
             createItemService.Init(gameData);
@@ -57,7 +59,7 @@ namespace TB
 
             itemComponent.OnEndDragAction += _inputService.OnEndDrag;
 
-            _gameData.AddNewItem(itemComponent);
+            _gameData.AddNewItem(itemComponent, item);
         }
 
         private void TransferItemTo(ListType transferTo, ItemInfo item)
@@ -72,6 +74,14 @@ namespace TB
                 case ListType.Secondary:
                     _gameData.TransferToMain(item);
                     break;
+            }
+        }
+
+        private void LoadData()
+        {
+            for (int i = 0; i < _gameData.LoadedItems.Count; i++)
+            {
+                CreateItem(_gameData.LoadedItems[i]);
             }
         }
     }
