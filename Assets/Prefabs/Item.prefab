@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5189579068866737831}
   - component: {fileID: 7429019533241926607}
   - component: {fileID: 4900516356213803008}
-  - component: {fileID: 7423240721964432566}
   - component: {fileID: 4331096448125170414}
+  - component: {fileID: 7423240721964432566}
+  - component: {fileID: 5186063570527177198}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -79,25 +80,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7423240721964432566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032602885938836017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c364bfaf7a9f3834ea47e125d40bf3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: 0
-  _title: 
-  _listType: 0
-  _idText: {fileID: 6214394205718744355}
-  _titleText: {fileID: 1628689103557138710}
-  _canvasGroup: {fileID: 4331096448125170414}
-  dragOnSurfaces: 1
 --- !u!225 &4331096448125170414
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -110,6 +92,52 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7423240721964432566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032602885938836017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364bfaf7a9f3834ea47e125d40bf3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemInputLogic: {fileID: 5186063570527177198}
+  _id: 0
+  _title: 
+  _listType: 0
+  _idText: {fileID: 6214394205718744355}
+  _titleText: {fileID: 1628689103557138710}
+  _draggingIcon: {fileID: 4032602885938836017}
+  _draggingPlane: {fileID: 5189579068866737831}
+  _oldParent: {fileID: 0}
+  _canvasGroup: {fileID: 4331096448125170414}
+  _image: {fileID: 4900516356213803008}
+  Item:
+    ID: 0
+    Title: 
+    ListType: 0
+  dragOnSurfaces: 1
+--- !u!114 &5186063570527177198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032602885938836017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6091311950a454fb7771284a84dec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _draggingIcon: {fileID: 0}
+  _draggingPlane: {fileID: 0}
+  _oldParent: {fileID: 0}
+  _canvasGroup: {fileID: 0}
+  _image: {fileID: 0}
+  dragOnSurfaces: 1
 --- !u!1 &6504857512049318221
 GameObject:
   m_ObjectHideFlags: 0

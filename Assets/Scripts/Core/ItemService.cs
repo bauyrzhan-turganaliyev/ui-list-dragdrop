@@ -57,7 +57,7 @@ namespace TB
             _items.Add(itemComponent);
             _itemsTransform.Add(itemComponent.transform);
 
-            itemComponent.OnEndDragAction += _inputService.OnEndDrag;
+            itemComponent.ItemInputLogic.OnEndDragAction += _inputService.OnEndDrag;
 
             _gameData.AddNewItem(itemComponent, item);
         }
